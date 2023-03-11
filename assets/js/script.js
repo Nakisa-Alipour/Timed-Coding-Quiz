@@ -34,30 +34,28 @@ function startGame() {
 
 
 function timer() {
-  var timeLeft = 60;
-
   var timeInterval = setInterval(function () {
-    if (timeLeft > 1) {
-      countdown.textContent = timeLeft + ' seconds remaining';
-      timeLeft--;
-    } else if (timeLeft === 1) {
-      countdown.textContent = timeLeft + ' second remaining';
-      timeLeft--;
+    if (timerCount > 1) {
+      countdown.textContent = timerCount + ' seconds remaining';
+      timerCount--;
+    } else if (timerCount === 1) {
+      countdown.textContent = timerCount + ' second remaining';
+      timerCount--;
     } else {
       countdown.textContent = '';
       clearInterval(timeInterval);
-      displayMessage(); //clear the page and show a message: All done! your final score is: correctAnswer, enter your initail and submit
+      displayMessage(); 
     }
   }, 1000);
 }
 
 
-function showQuestion(){} //write it later
+function showQuestion(){} //I will write it later
 
 function displayMessage () {
-    questionArea.textContent = ' ',
+    questionArea.textContent = "All done!";
     multipleChoiceArea.textContent = ' ';
-    checkAnswer.textContent = "Your final score is: " + correctAnswer
+    checkAnswer.textContent = "Your final score is: " + correctAnswer;
     resultSubmission.style.display = 'block';
 }
 
@@ -67,4 +65,4 @@ function storeScore() {
 }
 
 startButton.addEventListener("click", startGame);
-submissionButton.addEventListener("click", storeScore)
+submissionButton.addEventListener("click", storeScore);
