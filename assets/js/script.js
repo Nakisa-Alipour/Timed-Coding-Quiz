@@ -77,7 +77,21 @@ function renderMultipleChoice() {
     var choice = document.createElement("button")
     choice.textContent= choices[i];
     multipleChoiceArea.appendChild(choice);
-    
+    choice.addEventListener("click", function () {
+      var userChoice = this.textContent;
+      if (userChoice === correctChoice) {
+        checkAnswer.textContent = "Correct!";
+        correctAnswerNum++;
+      } else {
+        checkAnswer.textContent = "Wrong!";
+        wrongAnswerNum++;
+        timerCount -= 15; 
+        if (timerCount < 0) {
+          timerCount = 0;
+        }
+      }
+  }
+  )
 } 
 }
 
