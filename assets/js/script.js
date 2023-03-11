@@ -18,6 +18,18 @@ resultSubmission.style.display = 'none';
 var correctAnswer = 0;
 var wrongAnswer = 0;
 
+var questions = {
+    "Which of the following is not an international organisation?": ["FIFA", "NATO", "ASEAN", "FBI", 3],
+    "Which of the following disorders is the fear of being alone?": ["Agoraphobia", "Aerophobia", "Acrophobia", "Arachnophobia", 0],
+    "What is the speed of sound?": ["120 km/h", "1200 km/h", "400 km/h", "700 km/h", 1],
+    "What do we call a newly hatched butterfly?": ["A moth", "A butter", "A caterpillar", "A chrysalis", 2],
+    "Which did Viking people use as money?": ["Rune stones", "Jewellery", "Seal skins", "Wool", 1],
+    "What is the main component of the sun?": ["Liquid lava", "Gas", "Molten iron", "Rock", 1],
+    "Goulash is a type of beef soup in which country?": ["Hungary", "Czech Republic", "Slovakia", "Ireland", 0],
+    "Which of the following animals can run the fastest?": ["Cheetah", "Leopard", "Tiger", "Lion", 0],
+    "What does the term “SOS” commonly stand for?": ["Save Our Sheep", "Save Our Ship", "Save Our Seal", "Save Our Souls", 3]
+  };
+
 
 
 function startGame() {
