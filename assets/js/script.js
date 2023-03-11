@@ -15,9 +15,8 @@ var submissionButton = document.getElementById("submit");
 
 var timeleft;
 resultSubmission.style.display = 'none';
-
-
-
+var correctAnswer = 0;
+var wrongAnswer = 0;
 
 
 
