@@ -38,7 +38,7 @@ function startGame() {
   highscoreButton.disabled = true;
   extraInfo.textContent = ' ';
   timer();
-  showQuestion ();  //show question with multiple choice
+  renderMultipleChoice ();  //show question with multiple choice
   
 }
 
@@ -60,8 +60,18 @@ function timer() {
   }, 1000);
 }
 
+function checkUserChoice (){};
 
-function showQuestion(){} //I will write it later
+function renderMultipleChoice() {
+  var question = Object.keys(questions)[0];
+  var choices = questions [question].slice(0,-1);
+  questionArea.textContent = question;
+  for (var i = 0, i<4, i++) {
+    var choices[i] = questions[Object.keys(questions)[i]];
+    multipleChoiceArea.children[i].textContent= choices[i];
+  }
+  choices.addEventListener("click", checkUserChoice());
+} 
 
 function displayMessage () {
     questionArea.textContent = "All done!";
