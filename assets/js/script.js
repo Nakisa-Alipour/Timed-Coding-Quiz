@@ -5,8 +5,8 @@ var countdown = document.querySelector(".count-down");
 var questionArea = document.querySelector(".question-area");
 var multipleChoiceArea = document.querySelector(".multiplechoice-area");
 var checkAnswer = document.querySelector(".check-answer");
-var correctAnswer = document.querySelector(".correct-answer");
-var wrongAnswer = document.querySelector(".wrong-answer");
+var correctAnswerNum = document.querySelector(".correct-answer-number");
+var wrongAnswerNum = document.querySelector(".wrong-answer-number");
 var resultSubmission = document.querySelector(".result-submission");
 
 var intialInput = document.getElementById("initial");
@@ -15,8 +15,9 @@ var submissionButton = document.getElementById("submit");
 
 var timeleft;
 resultSubmission.style.display = 'none';
-var correctAnswer = 0;
-var wrongAnswer = 0;
+var correctAnswerNum = 0;
+var wrongAnswerNum = 0;
+var correctChoice;
 
 var questions = {
     "Which of the following is not an international organisation?": ["FIFA", "NATO", "ASEAN", "FBI", 3],
@@ -60,18 +61,25 @@ function timer() {
   }, 1000);
 }
 
-function checkUserChoice (){};
+function checkUserChoice (){
+  if (choices[i] === correctChoice.questions [question])
+  correctAnswerNum ++;
+};
 
 function renderMultipleChoice() {
-  var question = Object.keys(questions)[0];
+  var currentQuestion = 0;
+  var question = Object.keys(questions)[currentQuestion];
   var choices = questions [question].slice(0,-1);
+  correctChoice = questions [question][4];
   questionArea.textContent = question;
-  for (var i = 0, i<4, i++) {
-    var choices[i] = questions[Object.keys(questions)[i]];
-    multipleChoiceArea.children[i].textContent= choices[i];
-  }
-  choices.addEventListener("click", checkUserChoice());
+  
+  for (var i = 0; i < 4; i++) {
+    var choice = document.createElement("button")
+    choice.textContent= choices[i];
+    multipleChoiceArea.appendChild(choice);
+    
 } 
+}
 
 function displayMessage () {
     questionArea.textContent = "All done!";
@@ -89,3 +97,4 @@ function storeScore() {
 
 startButton.addEventListener("click", startGame);
 submissionButton.addEventListener("click", storeScore);
+choices[i].addEventListener("click", checkUserChoice);
