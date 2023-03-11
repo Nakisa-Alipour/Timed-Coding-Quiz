@@ -1,4 +1,4 @@
-var extraInfo= document.querySelector(".extra-info");
+var extraInfo= document.getElementById("extra-info");
 var startButton= document.querySelector(".start-button");
 var highscoreButton= document.querySelector(".highscore-button");
 var countdown = document.querySelector(".count-down");
@@ -61,10 +61,6 @@ function timer() {
   }, 1000);
 }
 
-function checkUserChoice (){
-  if (choices[i] === correctChoice.questions [question])
-  correctAnswerNum ++;
-};
 
 function renderMultipleChoice() {
   var currentQuestion = 0;
@@ -111,4 +107,4 @@ function storeScore() {
 
 startButton.addEventListener("click", startGame);
 submissionButton.addEventListener("click", storeScore);
-choices[i].addEventListener("click", checkUserChoice);
+
