@@ -54,13 +54,15 @@ function showQuestion(){} //I will write it later
 function displayMessage () {
     questionArea.textContent = "All done!";
     multipleChoiceArea.textContent = ' ';
-    checkAnswer.textContent = "Your final score is: " + correctAnswer;
+    checkAnswer.textContent = "Your final score is: " + correctAnswer.toString();
     resultSubmission.style.display = 'block';
 }
 
 function storeScore() {
-  var initial = localStorage.setItem("initial", intialInput);
-  var finalScore = localStorage.setItem("final-score", correctAnswer);
+  var initial = intialInput.value;
+  var finalScore = correctAnswer
+  localStorage.setItem("initial", initial);
+  localStorage.setItem("final-score", finalScore);
 }
 
 startButton.addEventListener("click", startGame);
