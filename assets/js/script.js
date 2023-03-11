@@ -14,6 +14,7 @@ var submissionButton = document.getElementById("submit");
 
 
 var timeleft;
+resultSubmission.style.display = 'none';
 
 
 
@@ -57,15 +58,13 @@ function displayMessage () {
     questionArea.textContent = ' ',
     multipleChoiceArea.textContent = ' ';
     checkAnswer.textContent = "Your final score is: " + correctAnswer
-    resultSubmission.fadein();
+    resultSubmission.style.display = 'block';
 }
 
-
-
-
-
-
-
-
+function storeScore() {
+  var initial = localStorage.setItem("initial", intialInput);
+  var finalScore = localStorage.setItem("final-score", correctAnswer);
+}
 
 startButton.addEventListener("click", startGame);
+submissionButton.addEventListener("click", storeScore)
