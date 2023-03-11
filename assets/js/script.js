@@ -9,11 +9,11 @@ var correctAnswerNum = document.querySelector(".correct-answer-number");
 var wrongAnswerNum = document.querySelector(".wrong-answer-number");
 var resultSubmission = document.querySelector(".result-submission");
 
-var intialInput = document.getElementById("initial");
+var initialInput = document.getElementById("initial");
 var submissionButton = document.getElementById("submit");
 
 
-var timeleft;
+var timerCount;
 resultSubmission.style.display = 'none';
 var correctAnswerNum = 0;
 var wrongAnswerNum = 0;
@@ -39,7 +39,7 @@ function startGame() {
   highscoreButton.disabled = true;
   extraInfo.textContent = ' ';
   timer();
-  renderMultipleChoice ();  //show question with multiple choice
+  renderMultipleChoice (); 
   
 }
 
@@ -99,8 +99,8 @@ function displayMessage () {
 }
 
 function storeScore() {
-  var initial = intialInput.value;
-  var finalScore = correctAnswer
+  var initial = initialInput.value;
+  var finalScore = correctAnswerNum;
   localStorage.setItem("initial", initial);
   localStorage.setItem("final-score", finalScore);
 }
