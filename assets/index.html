@@ -21,19 +21,25 @@
 
     <main>
       <section>
-        <div class="countdown"></div>
+        <div class="count-down">time left: 0</div>
       </section>
 
       <section>
         <div class="question-area"></div>
-        <div class="multichoice-area"></div>
+        <div class="multiplechoice-area"></div>
       </section>
 
       <section>
         <div class="results">
-          <div class="check-answer"></div>
-          <h2>Correct answer/s: <span class="correct-answer">0 </span> </h2>
-          <h2>Wrong answer/s: <span class="wrong-answer">0</span></h2>
+          <h2 class="check-answer"></h2>
+          <h3>Correct answer/s: <span class="correct-answer">0 </span> </h3>
+          <h3>Wrong answer/s: <span class="wrong-answer">0</span></h3>
+          <div class="result-submission">
+            <form>
+              <input placeholder="your initial" id="initial" />
+              <button id="submit">Submit</button>   
+            </form>
+          </div>
         </div>
       </section>
 
