@@ -11,13 +11,15 @@ var resultSubmission = document.querySelector(".result-submission");
 var initialInput = document.getElementById("initial");
 var submissionButton = document.getElementById("submit");
 var retrieveUserInitial = document.getElementById("retrieve-user-initial");
-var retriveUserScore = document.getElementById("retrive-user-score")
+var retriveUserScore = document.getElementById("retrive-user-score");
+var clearInfoButton = document.getElementById("clear-info-button");
 
 
 var timerCount;
 resultSubmission.style.display = 'none';
 var correctAnswerNum = 0;
 var wrongAnswerNum = 0;
+var currentQuestion = 0;
 var correctChoice;
 
 var questions = {
@@ -65,7 +67,6 @@ function timer() {
 
 
 function renderMultipleChoice() {
-  var currentQuestion = 0;
   var question = Object.keys(questions)[currentQuestion];
   var choices = questions [question].slice(0,-1);
   correctChoice = questions [question][4];
@@ -109,13 +110,18 @@ function storeScore() {
 }
 
 function retrieveData () {
-  localStorage.getItem("initial")
-  retrieveUserInitial.textContent = "initial";
+  retrieveUserInitial.textContent = localStorage.getItem("initial");
+  retriveUserScore.textContent = localStorage.setItem("final-score");
 
-  
+}
 
+function clearData() {
+  localStorage.clear();
+  retrieveUserInitial.textContent = " ";
+  retriveUserScore.textContent = " ";
 }
 
 startButton.addEventListener("click", startGame);
 submissionButton.addEventListener("click", storeScore);
+clearInfoButton.addEventListener("click", clearData);
 
