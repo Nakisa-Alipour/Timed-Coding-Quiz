@@ -8,9 +8,10 @@ var checkAnswer = document.querySelector(".check-answer");
 var correctAnswerNum = document.querySelector(".correct-answer-number");
 var wrongAnswerNum = document.querySelector(".wrong-answer-number");
 var resultSubmission = document.querySelector(".result-submission");
-
 var initialInput = document.getElementById("initial");
 var submissionButton = document.getElementById("submit");
+var retrieveUserInitial = document.getElementById("retrieve-user-initial");
+var retriveUserScore = document.getElementById("retrive-user-score")
 
 
 var timerCount;
@@ -95,7 +96,7 @@ function renderMultipleChoice() {
 function displayMessage () {
     questionArea.textContent = "All done!";
     multipleChoiceArea.textContent = ' ';
-    checkAnswer.textContent = "Your final score is: " + correctAnswer.toString();
+    checkAnswer.textContent = "Your final score is: " + correctAnswerNum.toString();
     resultSubmission.style.display = 'block';
 }
 
@@ -104,6 +105,15 @@ function storeScore() {
   var finalScore = correctAnswerNum;
   localStorage.setItem("initial", initial);
   localStorage.setItem("final-score", finalScore);
+  retrieveData();
+}
+
+function retrieveData () {
+  localStorage.getItem("initial")
+  retrieveUserInitial.textContent = "initial";
+
+  
+
 }
 
 startButton.addEventListener("click", startGame);
