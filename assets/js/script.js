@@ -13,14 +13,17 @@ var submissionButton = document.getElementById("submit");
 var retrieveUserInitial = document.getElementById("retrieve-user-initial");
 var retriveUserScore = document.getElementById("retrive-user-score");
 var clearInfoButton = document.getElementById("clear-info-button");
+var resultsSection = document.querySelector(".results-section");
 
 
 var timerCount;
 resultSubmission.style.display = 'none';
+resultsSection.style.display = 'none';
 var correctAnswerNum = 0;
 var wrongAnswerNum = 0;
 var currentQuestion = 0;
 var correctChoice;
+var timeInterval;
 
 var questions = {
     "Inside which HTML element do we put the JavaScript?": ["script", "js", "scripting", "javascript", 0],
@@ -30,7 +33,7 @@ var questions = {
     "How do you call a function named \"myFunction\"?": ["call function myFunction()", "call myFunction()", "myFunction()", "function(myFunction)", 2],
     "How to write an IF statement in JavaScript?": ["if 1 == 5 then", "if i = 5", "if i = 5 then", "if (i==5)", 3],
     "How to write an IF statement for executing some code if \"i\" is NOT equal to 5?": ["if i <> 5", "if (i <> 5)", "if (i !=5 )", "if i =! 5 then", 2],
-    "How does a WHILE loop start?": ["while 1 =1 to 10", "while (i <= 10)", "while (i <= 10; i ++)", "while i<= 10 and i ++", 1],
+    "How does a WHILE loop start?": ["while i =1 to 10", "while (i <= 10)", "while (i <= 10; i ++)", "while i<= 10 and i ++", 1],
     "How can you add a comment in a JavaScript?": ["<!--This is a comment-->", "//This is a comment", "'This is a comment' ", "<This is a comment>", 1],
     "How can you detect the client's browser name?": ["navigator.appName ", "browser.name", "client.navName", "nav.clientName", 0],
   };
@@ -44,6 +47,7 @@ function startGame() {
   extraInfo.textContent = ' ';
   timer();
   renderMultipleChoice (); 
+  resultsSection.style.display = 'block';
   
 }
 
@@ -66,7 +70,7 @@ function timer() {
 }
 
 
-function renderMultipleChoice() {
+function renderMultipleChoice(event) {
   var question = Object.keys(questions)[currentQuestion];
   var choices = questions [question].slice(0,-1);
   correctChoice = questions [question][4];
