@@ -4,26 +4,29 @@
     <title>Timed Multiple Choice Quiz</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
   </head>
   <body>
     <header>
       <div class="header-style">
         <h1>Multiple Choice Quiz</h1>
         <div id="extra-info">
-          <p>Please answer 5 following questions in the time limit.</p>
-          <p>Incorrect answer will penalize your time by 15 seconds.</p>
+          <p>Please answer following questions in the time limit.</p>
+          <p>Incorrect answer will penalize your time by <b>15 seconds</b>.</p>
         </div>
       </div>
-      <button class="start-button">Start</button>
-      <button class="highscore-button">High Scores</button>
     </header>
-
-    <main>
-      <section>
+    <nav>
+      <button class="start-button">Start</button>
+      <section id="timer">
         <div class="count-down">time left: 0</div>
       </section>
+      <button class="highscore-button">High Scores</button>
+    </nav>
+    
+    
 
+    <main>
       <section>
         <div class="question-area"></div>
         <div class="multiplechoice-area"></div>
