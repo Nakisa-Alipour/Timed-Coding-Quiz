@@ -20,15 +20,16 @@ var wrongAnswerNum = 0;
 var correctChoice;
 
 var questions = {
-    "Which of the following is not an international organisation?": ["FIFA", "NATO", "ASEAN", "FBI", 3],
-    "Which of the following disorders is the fear of being alone?": ["Agoraphobia", "Aerophobia", "Acrophobia", "Arachnophobia", 0],
-    "What is the speed of sound?": ["120 km/h", "1200 km/h", "400 km/h", "700 km/h", 1],
-    "What do we call a newly hatched butterfly?": ["A moth", "A butter", "A caterpillar", "A chrysalis", 2],
-    "Which did Viking people use as money?": ["Rune stones", "Jewellery", "Seal skins", "Wool", 1],
-    "What is the main component of the sun?": ["Liquid lava", "Gas", "Molten iron", "Rock", 1],
-    "Goulash is a type of beef soup in which country?": ["Hungary", "Czech Republic", "Slovakia", "Ireland", 0],
-    "Which of the following animals can run the fastest?": ["Cheetah", "Leopard", "Tiger", "Lion", 0],
-    "What does the term “SOS” commonly stand for?": ["Save Our Sheep", "Save Our Ship", "Save Our Seal", "Save Our Souls", 3]
+    "Inside which HTML element do we put the JavaScript?": ["script", "js", "scripting", "javascript", 0],
+    "Where is the correct place to insert a JavaScript??": ["head and body", "head", "body", "header or footer only", 0],
+    "What is the correct syntax for referring to an external script?": ["script name", "script src", "script href", "script link", 1],
+    "What syntax do you use to write in an alert box?": ["msgBox", "alert", "msg", "alertBox", 1],
+    "How do you call a function named \"myFunction\"?": ["call function myFunction()", "call myFunction()", "myFunction()", "function(myFunction)", 2],
+    "How to write an IF statement in JavaScript?": ["if 1 == 5 then", "if i = 5", "if i = 5 then", "if (i==5)", 3],
+    "How to write an IF statement for executing some code if \"i\" is NOT equal to 5?": ["if i <> 5", "if (i <> 5)", "if (i !=5 )", "if i =! 5 then", 2],
+    "How does a WHILE loop start?": ["while 1 =1 to 10", "while (i <= 10)", "while (i <= 10; i ++)", "while i<= 10 and i ++", 1],
+    "How can you add a comment in a JavaScript?": ["<!--This is a comment-->", "//This is a comment", "'This is a comment' ", "<This is a comment>", 1],
+    "How can you detect the client's browser name?": ["navigator.appName ", "browser.name", "client.navName", "nav.clientName", 0],
   };
 
 
