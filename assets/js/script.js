@@ -1,26 +1,28 @@
-var extraInfo= document.getElementById("extra-info");
-var startButton= document.querySelector(".start-button");
-var highscoreButton= document.querySelector(".highscore-button");
+// Get HTML elements
+var extraInfo = document.getElementById("extra-info");
+var startButton = document.querySelector(".start-button");
+var highscoreButton = document.querySelector(".highscore-button");
 var countdown = document.querySelector(".count-down");
 var questionArea = document.querySelector(".question-area");
 var multipleChoiceArea = document.querySelector(".multiplechoice-area");
 var checkAnswer = document.querySelector(".check-answer");
-var correctAnswerNum = document.querySelector(".correct-answer-number");
-var wrongAnswerNum = document.querySelector(".wrong-answer-number");
+let correctAnswerNumElement = document.querySelector(".correct-answer-number");
+let wrongAnswerNumElement = document.querySelector(".wrong-answer-number");
 var resultSubmission = document.querySelector(".result-submission");
 var initialInput = document.getElementById("initial");
 var submissionButton = document.getElementById("submit");
 var retrieveUserInitial = document.getElementById("retrieve-user-initial");
-var retriveUserScore = document.getElementById("retrive-user-score");
+var retrieveUserScore = document.getElementById("retrieve-user-score");
 var clearInfoButton = document.getElementById("clear-info-button");
 var resultsSection = document.querySelector(".results-section");
 
 
+// Set initial values and styles
 var timerCount;
 resultSubmission.style.display = 'none';
 resultsSection.style.display = 'none';
-var correctAnswerNum = 0;
-var wrongAnswerNum = 0;
+let correctAnswerNum = 0;
+let wrongAnswerNum = 0;
 var currentQuestion = 0;
 var correctChoice;
 var timeInterval;
@@ -70,33 +72,40 @@ function timer() {
 }
 
 
-function renderMultipleChoice(event) {
-  var question = Object.keys(questions)[currentQuestion];
-  var choices = questions [question].slice(0,-1);
-  correctChoice = questions [question][4];
-  questionArea.textContent = question;
+var renderMultipleChoice = function () {
+  if (currentQuestion >= Object.keys(questions).length) {
+    return;
+  }
   
-  for (var i = 0; i < 4; i++) {
-    var choice = document.createElement("button")
-    choice.textContent= choices[i];
-    multipleChoiceArea.appendChild(choice);
+  var question = Object.keys(questions)[currentQuestion];
+  var choices = questions[question].slice(0, -1);
+  correctChoice = questions[question][4];
+  
+  questionArea.textContent = question;
+  multipleChoiceArea.textContent = "";
+  
+  for (var i = 0; i < choices.length; i++) {
+    var choice = document.createElement("button");
+    choice.textContent = choices[i];
     choice.addEventListener("click", function () {
-      var userChoice = this.textContent;
+      var userChoice = this.textContent.toString();
       if (userChoice === correctChoice) {
         checkAnswer.textContent = "Correct!";
         correctAnswerNum++;
       } else {
         checkAnswer.textContent = "Wrong!";
         wrongAnswerNum++;
-        timerCount -= 15; 
+        timerCount -= 15;
         if (timerCount < 0) {
           timerCount = 0;
         }
       }
+      currentQuestion++;
+      renderMultipleChoice();
+    });
+    multipleChoiceArea.appendChild(choice);
   }
-  )
-} 
-}
+};
 
 function displayMessage () {
     questionArea.textContent = "All done!";
@@ -115,7 +124,7 @@ function storeScore() {
 
 function retrieveData () {
   retrieveUserInitial.textContent = localStorage.getItem("initial");
-  retriveUserScore.textContent = localStorage.setItem("final-score");
+  retriveUserScore.textContent = localStorage.getItem("final-score");
 
 }
 
