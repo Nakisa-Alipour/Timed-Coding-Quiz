@@ -27,6 +27,7 @@ var currentQuestion = 0;
 var correctChoice;
 var timeInterval;
 
+
 // Define questions and answers
 var questions = [
   {
