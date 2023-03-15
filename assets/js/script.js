@@ -8,13 +8,13 @@ var multipleChoiceArea = document.querySelector(".multiplechoice-area");
 var checkAnswer = document.querySelector(".check-answer");
 let correctAnswerNumElement = document.querySelector(".correct-answer-number");
 let wrongAnswerNumElement = document.querySelector(".wrong-answer-number");
-var resultSubmission = document.querySelector(".result-submission");
+var resultSubmission = document.querySelector("#result-submission");
 var initialInput = document.getElementById("initial");
 var submissionButton = document.getElementById("submit");
 var retrieveUserInitial = document.getElementById("retrieve-user-initial");
 var retrieveUserScore = document.getElementById("retrieve-user-score");
 var clearInfoButton = document.getElementById("clear-info-button");
-var resultsSection = document.querySelector(".results-section");
+var resultsSection = document.querySelector("#results-section");
 
 
 // Set initial values and styles
@@ -178,8 +178,8 @@ function displayMessage () {
 
 // Store the user's initials and final score in local storage
 function storeScore() {
-  var initial = initialInput.value;
-  var finalScore = correctAnswerNum;
+  var initial = initialInput.toString();
+  var finalScore = correctAnswerNum.toString();
   localStorage.setItem("initial", initial);
   localStorage.setItem("final-score", finalScore);
   retrieveData();
@@ -187,15 +187,16 @@ function storeScore() {
 
 // Retrieve the user's initials and final score from local storage and displays them
 function retrieveData () {
-  retrieveUserInitial.textContent = localStorage.getItem("initial");
-  retrieveUserScore.textContent = localStorage.getItem("final-score");
+  window.location.href = 'highscore.html';
+  resultSubmission.textContent = localStorage.getItem("initial");
+  resultsSection.textContent = localStorage.getItem("final-score");
 }
 
 // Clear the user's initials and final score from local storage
 function clearData() {
   localStorage.clear();
-  retrieveUserInitial.textContent = " ";
-  retrieveUserScore.textContent = " ";
+  resultSubmission.textContent = " ";
+  resultsSection.textContent = " ";
 }
 
 // Add event listeners to buttons if they exist
@@ -205,6 +206,14 @@ if (startButton) {
 
 if (submissionButton) {
   submissionButton.addEventListener("click", storeScore);
+}
+
+if (clearInfoButton) {
+  clearInfoButton.addEventListener("click", clearData);
+}
+
+if (highscoreButton) {
+  highscoreButton.addEventListener("click", retrieveData);
 }
 
 if (clearInfoButton) {
