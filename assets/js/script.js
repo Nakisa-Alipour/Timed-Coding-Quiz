@@ -116,12 +116,12 @@ function renderMultipleChoice() {
 
   // Loop through each choice and create a button for each choice
   for (var i = 0; i < choices.length; i++) {
-      var choice = document.createElement("button");
-      choice.textContent = choices[i];
-      multipleChoiceArea.appendChild(choice);
+    var choice = document.createElement("button");
+    choice.textContent = choices[i];
+    multipleChoiceArea.appendChild(choice);
 
-      // Add event listener to each choice button to check if the user's choice is correct
-      choice.addEventListener("click", function () {
+    // Add event listener to each choice button to check if the user's choice is correct
+    choice.addEventListener("click", function () {
         // Disable buttons: Ensure they can't be pressed multiple times - Disables all buttons on click
         var choiceButtons = document.querySelectorAll(".multiplechoice-area button");
         for (var j = 0; j < choiceButtons.length; j++) {
@@ -149,12 +149,31 @@ function renderMultipleChoice() {
                 timerCount = 0;
             }
         }
+        // Move to the next question after a short delay
+        setTimeout(function() {
+          // Remove Right/Wrong message from earlier question
+          checkAnswer.textContent = "";
+          currentQuestion++;
+          if (currentQuestion < questions.length) {
+              renderMultipleChoice();
+          } else {
+              endQuiz();
+          }
+      }, 1000);
+  });
+}};
+      
 
+// This function displays the final score and allows the user to submit their initials
 function displayMessage () {
-    questionArea.textContent = "All done!";
-    multipleChoiceArea.textContent = ' ';
-    checkAnswer.textContent = "Your final score is: " + correctAnswerNum.toString();
-    resultSubmission.style.display = 'block';
+  questionArea.textContent = "All done!";
+  // Clear the multiple choice area
+  multipleChoiceArea.textContent = ' ';
+  // Display the final score
+  checkAnswer.textContent = "Your final score is: " + correctAnswerNum.toString();
+  // Display the form for submitting the user's initials
+  resultSubmission.style.display = 'flex';
+  resultSubmission.style.justifyContent = 'center';
 }
 
 function storeScore() {
