@@ -72,6 +72,13 @@ function startGame() {
   
 }
 
+// End the quiz
+function endQuiz() {
+  clearInterval(timeInterval);
+  highscoreButton.disabled = false;
+  // Display the user's score and ask for their initials
+  displayMessage();
+}
 
 
 function timer() {
