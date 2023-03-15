@@ -119,26 +119,36 @@ function renderMultipleChoice() {
       var choice = document.createElement("button");
       choice.textContent = choices[i];
       multipleChoiceArea.appendChild(choice);
-      
-    choice.addEventListener("click", function () {
-      var userChoice = this.textContent.toString();
-      if (userChoice === correctChoice) {
-        checkAnswer.textContent = "Correct!";
-        correctAnswerNum++;
-      } else {
-        checkAnswer.textContent = "Wrong!";
-        wrongAnswerNum++;
-        timerCount -= 15;
-        if (timerCount < 0) {
-          timerCount = 0;
+
+      // Add event listener to each choice button to check if the user's choice is correct
+      choice.addEventListener("click", function () {
+        // Disable buttons: Ensure they can't be pressed multiple times - Disables all buttons on click
+        var choiceButtons = document.querySelectorAll(".multiplechoice-area button");
+        for (var j = 0; j < choiceButtons.length; j++) {
+            choiceButtons[j].disabled = true;
         }
-      }
-      currentQuestion++;
-      renderMultipleChoice();
-    });
-    multipleChoiceArea.appendChild(choice);
-  }
-};
+        var userChoice = this.textContent;
+        if (userChoice === correctChoice) {
+            // Update the check answer area to indicate that the user's choice is correct
+            checkAnswer.textContent = "Correct!";
+            checkAnswer.style.backgroundColor = "limegreen";
+            checkAnswer.style.color = "white";
+            // Increment the number of correct answers
+            correctAnswerNumElement.textContent = ++correctAnswerNum;
+        } else {
+            // Update the check answer area to indicate that the user's choice is wrong
+            checkAnswer.textContent = "Wrong!";
+            checkAnswer.style.backgroundColor = "red";
+            checkAnswer.style.color = "white";
+            // Increment the number of wrong answers
+            wrongAnswerNumElement.textContent = ++wrongAnswerNum;
+            // Subtract 15 seconds from the timer if the user's choice is wrong
+            timerCount -= 15;
+            // Make sure the timer does not go below zero
+            if (timerCount < 0) {
+                timerCount = 0;
+            }
+        }
 
 function displayMessage () {
     questionArea.textContent = "All done!";
