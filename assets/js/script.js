@@ -176,6 +176,7 @@ function displayMessage () {
   resultSubmission.style.justifyContent = 'center';
 }
 
+// Store the user's initials and final score in local storage
 function storeScore() {
   var initial = initialInput.value;
   var finalScore = correctAnswerNum;
@@ -184,16 +185,17 @@ function storeScore() {
   retrieveData();
 }
 
+// Retrieve the user's initials and final score from local storage and displays them
 function retrieveData () {
   retrieveUserInitial.textContent = localStorage.getItem("initial");
-  retriveUserScore.textContent = localStorage.getItem("final-score");
-
+  retrieveUserScore.textContent = localStorage.getItem("final-score");
 }
 
+// Clear the user's initials and final score from local storage
 function clearData() {
   localStorage.clear();
   retrieveUserInitial.textContent = " ";
-  retriveUserScore.textContent = " ";
+  retrieveUserScore.textContent = " ";
 }
 
 startButton.addEventListener("click", startGame);
