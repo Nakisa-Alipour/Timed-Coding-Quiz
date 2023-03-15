@@ -27,18 +27,34 @@ var currentQuestion = 0;
 var correctChoice;
 var timeInterval;
 
-var questions = {
-    "Inside which HTML element do we put the JavaScript?": ["script", "js", "scripting", "javascript", 0],
-    "Where is the correct place to insert a JavaScript??": ["head and body", "head", "body", "header or footer only", 0],
-    "What is the correct syntax for referring to an external script?": ["script name", "script src", "script href", "script link", 1],
-    "What syntax do you use to write in an alert box?": ["msgBox", "alert", "msg", "alertBox", 1],
-    "How do you call a function named \"myFunction\"?": ["call function myFunction()", "call myFunction()", "myFunction()", "function(myFunction)", 2],
-    "How to write an IF statement in JavaScript?": ["if 1 == 5 then", "if i = 5", "if i = 5 then", "if (i==5)", 3],
-    "How to write an IF statement for executing some code if \"i\" is NOT equal to 5?": ["if i <> 5", "if (i <> 5)", "if (i !=5 )", "if i =! 5 then", 2],
-    "How does a WHILE loop start?": ["while i =1 to 10", "while (i <= 10)", "while (i <= 10; i ++)", "while i<= 10 and i ++", 1],
-    "How can you add a comment in a JavaScript?": ["<!--This is a comment-->", "//This is a comment", "'This is a comment' ", "<This is a comment>", 1],
-    "How can you detect the client's browser name?": ["navigator.appName ", "browser.name", "client.navName", "nav.clientName", 0],
-  };
+// Define questions and answers
+var questions = [
+  {
+      question: "Inside which HTML element do we put the JavaScript?",
+      choices: ["<script>", "<javascript>", "<js>", "<scripting>"],
+      correctAnswer: "<script>"
+  },
+  {
+      question: "What is the correct syntax for referring to an external script called 'xxx.js'?",
+      choices: ["<script href='xxx.js'>", "<script name='xxx.js'>", "<script src='xxx.js'>"],
+      correctAnswer: "<script src='xxx.js'>"
+  },
+  {
+      question: "How do you write 'Hello World' in an alert box?",
+      choices: ["alertBox('Hello World')", "alert('Hello World')", "msgBox('Hello World')", "msg('Hello World')"],
+      correctAnswer: "alert('Hello World')"
+  },
+  {
+      question: "How do you create a function in JavaScript?",
+      choices: ["function = myFunction()", "function myFunction()", "function:myFunction()", "create function myFunction()"],
+      correctAnswer: "function myFunction()"
+  },
+  {
+      question: "How do you call a function named 'myFunction'?",
+      choices: ["myFunction()", "call function myFunction()", "call myFunction()", "execute myFunction()"],
+      correctAnswer: "myFunction()"
+  }
+];
 
 
 
