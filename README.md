@@ -36,12 +36,20 @@ To install the Code Quiz application, clone the repository to your local machine
 git clone git@github.com:your-username/code-quiz.git
 
 ## Usage
-To begin the quiz, click the "Start" button, and the timer will start, presenting you with a question. If you answer a question correctly, another question will be presented, but if you answer incorrectly, time will be subtracted from the clock. The game will end when either all questions are answered or the timer reaches zero.
+To begin the quiz, click the "Start" button, and the timer will start, presenting you with a question. 
 
-After the game is over, you can save your initials and your score. Your high score will be stored and compared to your peers, allowing you to gauge your progress.
+![Multiple choice](https://user-images.githubusercontent.com/124220654/225272663-f573f7fc-a3d4-43f9-b9b9-50e40d4e38ff.jpg)
+
+If you answer a question correctly, another question will be presented, but if you answer incorrectly, time will be subtracted from the clock. 
+
+![Multiple choice 2](https://user-images.githubusercontent.com/124220654/225272893-5f632bfa-977e-4543-acb9-ed0145360829.jpg)
+
+
+The game will end when either all questions are answered or the timer reaches zero. After the game is over, you can save your initials and your score. Your high score will be stored and compared to your peers, allowing you to gauge your progress.
+
+![Multiple choice 3](https://user-images.githubusercontent.com/124220654/225272938-ea5c0db7-a4ad-4559-b8c7-49ad7ed80e30.jpg)
 
 
 
-![Multiple choice](https://user-images.githubusercontent.com/124220654/225272399-323e3565-9d99-4917-ae62-fa1f4b75af1d.jpg)
 
 
