@@ -198,7 +198,15 @@ function clearData() {
   retrieveUserScore.textContent = " ";
 }
 
-startButton.addEventListener("click", startGame);
-submissionButton.addEventListener("click", storeScore);
-clearInfoButton.addEventListener("click", clearData);
+// Add event listeners to buttons if they exist
+if (startButton) {
+  startButton.addEventListener("click", startGame);
+}
 
+if (submissionButton) {
+  submissionButton.addEventListener("click", storeScore);
+}
+
+if (clearInfoButton) {
+  clearInfoButton.addEventListener("click", clearData);
+}
