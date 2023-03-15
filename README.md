@@ -42,3 +42,6 @@ After the game is over, you can save your initials and your score. Your high sco
 
 
 
+![Multiple choice](https://user-images.githubusercontent.com/124220654/225272399-323e3565-9d99-4917-ae62-fa1f4b75af1d.jpg)
+
+
