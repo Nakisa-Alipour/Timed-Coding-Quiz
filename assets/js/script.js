@@ -80,7 +80,7 @@ function endQuiz() {
   displayMessage();
 }
 
-
+// Start the timer
 function timer() {
   var timeInterval = setInterval(function () {
     if (timerCount > 1) {
@@ -97,22 +97,29 @@ function timer() {
   }, 1000);
 }
 
+// Render multiple choice questions on the screen
+function renderMultipleChoice() {
+  // Get the current question from the questions array based on the current question number
+  var question = questions[currentQuestion].question;
 
-var renderMultipleChoice = function () {
-  if (currentQuestion >= Object.keys(questions).length) {
-    return;
-  }
-  
-  var question = Object.keys(questions)[currentQuestion];
-  var choices = questions[question].slice(0, -1);
-  correctChoice = questions[question][4];
-  
+  // Get the choices for the current question
+  var choices = questions[currentQuestion].choices;
+
+  // Get the correct choice for the current question
+  correctChoice = questions[currentQuestion].correctAnswer;
+
+  // Update the question area with the current question
   questionArea.textContent = question;
-  multipleChoiceArea.textContent = "";
-  
+
+  // Clear the multipleChoiceArea before adding new choices
+  multipleChoiceArea.innerHTML = '';
+
+  // Loop through each choice and create a button for each choice
   for (var i = 0; i < choices.length; i++) {
-    var choice = document.createElement("button");
-    choice.textContent = choices[i];
+      var choice = document.createElement("button");
+      choice.textContent = choices[i];
+      multipleChoiceArea.appendChild(choice);
+      
     choice.addEventListener("click", function () {
       var userChoice = this.textContent.toString();
       if (userChoice === correctChoice) {
