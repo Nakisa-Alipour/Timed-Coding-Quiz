@@ -67,6 +67,8 @@ function startGame() {
   timer();
   renderMultipleChoice (); 
   resultsSection.style.display = 'block';
+  startButton.style.display = "none";
+  startButton.disabled = true;
   
 }
 
