@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
   <head>
     <title>Timed Multiple Choice Quiz</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
   </head>
+
   <body>
     <header>
       <div class="header-style">
@@ -16,39 +17,41 @@
         </div>
       </div>
     </header>
+
+    <section id="timer">
+      <div class="count-down">Welcome</div>
+    </section>
+   
     <nav>
       <button class="start-button">Start</button>
-      <section id="timer">
-        <div class="count-down">time left: 0</div>
-      </section>
       <button class="highscore-button">High Scores</button>
     </nav>
     
-    
-
     <main>
       <section>
         <div class="question-area"></div>
         <div class="multiplechoice-area"></div>
       </section>
-
       <section>
-        <div id = "results-section">
+        <div class="results-section">
           <h2 class="check-answer"></h2>
           <h3>Correct answer/s: <span class="correct-answer-number">0 </span> </h3>
           <h3>Wrong answer/s: <span class="wrong-answer-number">0</span></h3>
-          <div>
-            <form id = "result-submission">
-              <input placeholder="your initial" id="initial" />
-              <button id="submit">Submit</button>   
+          <div class="result-submission">
+            <form>
+              <label>Enter your initials</label></br>
+              <input id="name" required pattern=".{2,}"></br>
+              <label>Your score</label></br>
+              <input type="number" disabled id="score"></br>
+              <label>Date and Time</label></br>
+              <input id="date" disabled></br>
+              <button id="submit">Save this result to High Scores!</button>
             </form>
           </div>
         </div>
       </section>
-
-      
     </main>
-
+    
     <script src="./js/script.js"></script>
   </body>
 </html>
