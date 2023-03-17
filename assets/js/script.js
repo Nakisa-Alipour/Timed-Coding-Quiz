@@ -9,22 +9,42 @@ var checkAnswer = document.querySelector(".check-answer");
 let correctAnswerNumElement = document.querySelector(".correct-answer-number");
 let wrongAnswerNumElement = document.querySelector(".wrong-answer-number");
 var resultSubmission = document.querySelector(".result-submission");
-let initial = document.getElementById("name");
+var initialInput = document.getElementById("name");
+var formScore = document.getElementById("score");
 var submissionButton = document.getElementById("submit");
-var retrieveUserInitial = document.getElementById("retrieve-user-initial");
-var retrieveUserScore = document.getElementById("retrieve-user-score");
-var clearInfoButton = document.getElementById("clear-info-button");
+var form = document.querySelector('form');
 var resultsSection = document.querySelector(".results-section");
+const dateField = document.getElementById('date');
+var scoreTable = document.getElementById('scoreTable');
 
 // Set initial values and styles
 var timerCount;
-resultSubmission.style.display = 'none';
-resultsSection.style.display = 'none';
 let correctAnswerNum = 0;
 let wrongAnswerNum = 0;
 var currentQuestion = 0;
 var correctChoice;
 var timeInterval;
+
+
+// Check items exist on page before applying style changes
+if (resultSubmission) {
+  resultSubmission.style.display = 'none';
+}
+if (resultsSection) {
+  resultsSection.style.display = 'none';
+}
+if (dateField) {
+// Get the date input field
+const dateField = document.getElementById('date');
+// Set the disabled attribute
+dateField.disabled = true;
+// Get the current date and time
+const now = new Date();
+// Format the date and time as a string
+const dateString = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}`;
+// Set the value of the date input field
+dateField.value = dateString;
+}
 
 // Define questions and answers
 var questions = [
