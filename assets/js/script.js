@@ -100,12 +100,13 @@ function startGame() {
 
 // End the quiz
 function endQuiz() {
-    clearInterval(timeInterval);
-    highscoreButton.disabled = false;
-    // Display the user's score and ask for their initials
-    displayMessage();
+  clearInterval(timeInterval);
+  highscoreButton.disabled = false;
+  // Display the user's score and ask for their initials
+  displayMessage();
+  highscoreButton.style.display = "block";
+  timerCount = 0;
 }
-
 
 // Start the timer
 function timer() {
@@ -126,70 +127,69 @@ function timer() {
 
 // Render multiple choice questions on the screen
 function renderMultipleChoice() {
-    // Get the current question from the questions array based on the current question number
-    var question = questions[currentQuestion].question;
+  // Get the current question from the questions array based on the current question number
+  var question = questions[currentQuestion].question;
 
-    // Get the choices for the current question
-    var choices = questions[currentQuestion].choices;
+  // Get the choices for the current question
+  var choices = questions[currentQuestion].choices;
 
-    // Get the correct choice for the current question
-    correctChoice = questions[currentQuestion].correctAnswer;
+  // Get the correct choice for the current question
+  correctChoice = questions[currentQuestion].correctAnswer;
 
-    // Update the question area with the current question
-    questionArea.textContent = question;
+  // Update the question area with the current question
+  questionArea.textContent = question;
 
-    // Clear the multipleChoiceArea before adding new choices
-    multipleChoiceArea.innerHTML = '';
+  // Clear the multipleChoiceArea before adding new choices
+  multipleChoiceArea.innerHTML = '';
 
-    // Loop through each choice and create a button for each choice
-    for (var i = 0; i < choices.length; i++) {
-        var choice = document.createElement("button");
-        choice.textContent = choices[i];
-        multipleChoiceArea.appendChild(choice);
+  // Loop through each choice and create a button for each choice
+  for (var i = 0; i < choices.length; i++) {
+      var choice = document.createElement("button");
+      choice.textContent = choices[i];
+      multipleChoiceArea.appendChild(choice);
+      // Add event listener to each choice button to check if the user's choice is correct
+      choice.addEventListener("click", function () {
+          // Disable buttons: Ensure they can't be pressed multiple times - Disables all buttons on click
+          var choiceButtons = document.querySelectorAll(".multiplechoice-area button");
+          for (var j = 0; j < choiceButtons.length; j++) {
+              choiceButtons[j].disabled = true;
+          }
+          var userChoice = this.textContent;
+          if (userChoice === correctChoice) {
+              // Update the check answer area to indicate that the user's choice is correct
+              checkAnswer.textContent = "Correct!";
+              checkAnswer.style.backgroundColor = "limegreen";
+              checkAnswer.style.color = "white";
+              // Increment the number of correct answers
+              correctAnswerNumElement.textContent = ++correctAnswerNum;
+          } else {
+              // Update the check answer area to indicate that the user's choice is wrong
+              checkAnswer.textContent = "Wrong!";
+              checkAnswer.style.backgroundColor = "red";
+              checkAnswer.style.color = "white";
+              // Increment the number of wrong answers
+              wrongAnswerNumElement.textContent = ++wrongAnswerNum;
+              // Subtract 15 seconds from the timer if the user's choice is wrong
+              timerCount -= 15;
+              // Make sure the timer does not go below zero
+              if (timerCount < 0) {
+                  timerCount = 0;
+              }
+          }
+          // Move to the next question after a short delay
+          setTimeout(function() {
+              // Remove Right/Wrong message from earlier question
+              checkAnswer.textContent = "";
+              currentQuestion++;
+              if (currentQuestion < questions.length) {
+                  renderMultipleChoice();
+              } else {
+                  endQuiz();
+              }
+          }, 1000);
+      });
+  }};
 
-        // Add event listener to each choice button to check if the user's choice is correct
-        choice.addEventListener("click", function () {
-            // Disable buttons: Ensure they can't be pressed multiple times - Disables all buttons on click
-            var choiceButtons = document.querySelectorAll(".multiplechoice-area button");
-            for (var j = 0; j < choiceButtons.length; j++) {
-                choiceButtons[j].disabled = true;
-            }
-            var userChoice = this.textContent;
-            if (userChoice === correctChoice) {
-                // Update the check answer area to indicate that the user's choice is correct
-                checkAnswer.textContent = "Correct!";
-                checkAnswer.style.backgroundColor = "limegreen";
-                checkAnswer.style.color = "white";
-                // Increment the number of correct answers
-                correctAnswerNumElement.textContent = ++correctAnswerNum;
-            } else {
-                // Update the check answer area to indicate that the user's choice is wrong
-                checkAnswer.textContent = "Wrong!";
-                checkAnswer.style.backgroundColor = "red";
-                checkAnswer.style.color = "white";
-                // Increment the number of wrong answers
-                wrongAnswerNumElement.textContent = ++wrongAnswerNum;
-                // Subtract 15 seconds from the timer if the user's choice is wrong
-                timerCount -= 15;
-                // Make sure the timer does not go below zero
-                if (timerCount < 0) {
-                    timerCount = 0;
-                }
-            }
-
-            // Move to the next question after a short delay
-            setTimeout(function() {
-                // Remove Right/Wrong message from earlier question
-                checkAnswer.textContent = "";
-                currentQuestion++;
-                if (currentQuestion < questions.length) {
-                    renderMultipleChoice();
-                } else {
-                    endQuiz();
-                }
-            }, 1000);
-        });
-    }};
 
 // This function displays the final score and allows the user to submit their initials
 function displayMessage () {
