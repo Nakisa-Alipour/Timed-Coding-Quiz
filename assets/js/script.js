@@ -193,62 +193,85 @@ function renderMultipleChoice() {
 
 // This function displays the final score and allows the user to submit their initials
 function displayMessage () {
-    questionArea.textContent = "All done!";
-    // Clear the multiple choice area
-    multipleChoiceArea.textContent = ' ';
-    // Display the final score
-    checkAnswer.textContent = "Your final score is: " + correctAnswerNum.toString();
-    // Display the form for submitting the user's initials
-    resultSubmission.style.display = 'flex';
-    resultSubmission.style.justifyContent = 'center';
+  questionArea.textContent = "All done!";
+  // Clear the multiple choice area
+  multipleChoiceArea.textContent = ' ';
+  // Display the final score
+  checkAnswer.textContent = "Your final score is: " + correctAnswerNum.toString();
+  // Display the form for submitting the user's initials
+  resultSubmission.style.display = 'flex';
+  resultSubmission.style.justifyContent = 'center';
+  // Set the value of the formScore input field to the final score
+  formScore.value = correctAnswerNum;
 }
 
-// Store the user's initials and final score in local storage
-function storeScore(event) {
-  // var initial = initialInput.value;
-  // var finalScore = correctAnswerNum;
-  event.stopPropagation();
-  event.preventDefault();
-  initial = initial.value
-  localStorage.setItem("initial", JSON.stringify(initial));
-  console.log("initial");
-  localStorage.setItem("final-score", JSON.stringify(correctAnswerNum));
-  console.log("final-score");
-  retrieveData();
-}
+//Listen for form submissions & Write data to local storage
 
-// Retrieve the user's initials and final score from local storage and displays them
-function retrieveData () {
-  window.location.href = "highscore.html";
-  retrieveUserInitial.textContent = localStorage.getItem("initial");
-  retrieveUserScore.textContent = localStorage.getItem("final-score");
-}
-
-// Clear the user's initials and final score from local storage
-function clearData() {
-  localStorage.clear();
-  retrieveUserInitial.textContent = " ";
-  retrieveUserScore.textContent = " ";
-  window.location.href= 'index.html';
-}
-
-// Add event listeners to buttons if they exist
-if (startButton) {
-  startButton.addEventListener("click", startGame);
-}
-
-if (submissionButton) {
-  submissionButton.addEventListener("click", storeScore);
-}
-
-if (clearInfoButton) {
-  clearInfoButton.addEventListener("click", clearData);
-}
-
-if (highscoreButton) {
-  highscoreButton.addEventListener("click", retrieveData);
-}
-
-if (clearInfoButton) {
-  clearInfoButton.addEventListener("click", clearData);
-}
+if (form) {
+  form.addEventListener('submit', function(event) {
+      event.preventDefault(); // prevent form submission
+  
+      // Save the data from form field values to local storage
+      var data = JSON.parse(localStorage.getItem('data')) || [];
+      data.push({ initials: initialInput.value, score: formScore.value, date: dateField.value });
+      localStorage.setItem('data', JSON.stringify(data));
+  
+      // Show alert window with "High Score Saved!" message
+      window.alert('High Score Saved!');
+  
+      // Disable the form fields to prevent multiple submissions
+      initialInput.disabled = true;
+      formScore.disabled = true;
+      dateField.disabled = true;
+      submissionButton.disabled = true;
+      submissionButton.style.backgroundColor = "limegreen";
+      submissionButton.textContent = "Submission successful";
+  });
+  }
+  if (startButton) {
+      startButton.addEventListener("click", startGame);
+  }
+  
+  //On click navigate to HighScore
+  if (highscoreButton) {
+  highscoreButton.addEventListener('click', () => {
+      window.location.href = './highscore.html';
+  });
+  }
+  
+  
+  // Retrieve the data from local storage and parse it to a JavaScript object
+  const data = JSON.parse(localStorage.getItem('data'));
+  function clearLocalStorage() {
+      // Clear local storage
+      localStorage.clear();
+  
+      // Display alert message
+      alert("High score erased.");
+  
+      // Refresh the page
+      location.reload();
+  }
+  
+  if (scoreTable) {
+  
+  //handles empty local storage to prevent null errors in the console
+  if (data !== null) {
+      // Sort the data by score in descending order
+      data.sort((a, b) => b.score - a.score);
+  
+      // Create a table row for each data item and add it to the table
+      const tbody = document.querySelector('#scoreTable tbody');
+      data.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+          <td>${item.initials}</td>
+          <td>${item.score}</td>
+          <td>${item.date}</td>
+        `;
+          tbody.appendChild(row);
+      });
+  } else {
+      window.alert('High score table is currently empty!');
+  }
+  }
