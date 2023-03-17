@@ -36,18 +36,24 @@ To install the Code Quiz application, clone the repository to your local machine
 git clone git@github.com:your-username/code-quiz.git
 
 ## Usage
-To begin the quiz, click the "Start" button, and the timer will start, presenting you with a question. 
+To begin the quiz, click the "Start" button, and the timer will start.
 
-![Multiple choice](https://user-images.githubusercontent.com/124220654/225272663-f573f7fc-a3d4-43f9-b9b9-50e40d4e38ff.jpg)
-
-If you answer a question correctly, another question will be presented, but if you answer incorrectly, time will be subtracted from the clock. 
-
-![Multiple choice 2](https://user-images.githubusercontent.com/124220654/225272893-5f632bfa-977e-4543-acb9-ed0145360829.jpg)
+![Multiple choice](https://user-images.githubusercontent.com/124220654/225842868-907718b6-4539-45ab-9c27-b6b1bb6f2507.jpg)
 
 
-The game will end when either all questions are answered or the timer reaches zero. After the game is over, you can save your initials and your score. Your high score will be stored and compared to your peers, allowing you to gauge your progress.
+and then , presenting you with a question and multiple choices.
 
-![Multiple choice 3](https://user-images.githubusercontent.com/124220654/225272938-ea5c0db7-a4ad-4559-b8c7-49ad7ed80e30.jpg)
+![Multiple choice 2](https://user-images.githubusercontent.com/124220654/225842950-7acab3ad-0c74-46bb-9119-de7bdc0982c2.jpg)
+
+
+If you answer a question correctly, another question will be presented, but if you answer incorrectly, time will be subtracted from the clock. The game will end when either all questions are answered or the timer reaches zero. 
+
+![Multiple choice 3](https://user-images.githubusercontent.com/124220654/225843391-739652b5-cf3b-4249-83e5-f50f8f18c96d.jpg)
+
+
+After the game is over, you can save your initials and your score. Your high score will be stored and compared to your peers, allowing you to gauge your progress.
+
+![Multiple choice 4](https://user-images.githubusercontent.com/124220654/225844377-c6977ddd-0acc-49ac-bad8-435a1473c610.jpg)
 
 
 
