@@ -78,11 +78,7 @@ var questions = [
       choices: ["if (i == 5)", "if i = 5", "if i = 5 then", "if i == 5 then"],
       correctAnswer: "if (i == 5)"
     },
-    {
-      question: "How do you round the number 7.25, to the nearest integer?",
-      choices: ["rnd(7.25)", "Math.round(7.25)", "Math.rnd(7.25)", "round(7.25)"],
-      correctAnswer: "Math.round(7.25)"
-    },
+  
 ];
 
 // Start the quiz
