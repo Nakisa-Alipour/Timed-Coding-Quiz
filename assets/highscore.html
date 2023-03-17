@@ -4,18 +4,22 @@
     <title>Timed Multiple Choice Quiz</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
   </head>
-
-  <body class="container">
-    <div class = "result-submission"></div>
-    <div class = "results-section"></div>
-      <h3>your initial: "<span id="retrieve-user-initial"> "</span></h3>
-      <h3>total correct answer: "<span id="retrieve-user-score"> "</span></h3>
-    
-    <button onclick="window.location.href= 'index.html';">Back</button>
-    <button id="clear-info-button">Clear highscore</button>
-    <script src="./js/script.js"></script>
+  <body>
+  <table id="scoreTable">
+    <thead>
+    <tr>
+      <th>Initials</th>
+      <th>Score</th>
+      <th>Date</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <button onclick="window.location.href= 'index.html';">Back</button>
+  <button onclick="clearLocalStorage()" id="clear-info-button">Clear highscore</button>
+  <script src="assets/js/script.js"></script>
   </body>
 </html>
 
