@@ -53,9 +53,7 @@ If you answer a question correctly, another question will be presented, but if y
 
 After the game is over, you can save your initials and your score. Your high score will be stored and compared to your peers, allowing you to gauge your progress.
 
-![Multiple choice 4](https://user-images.githubusercontent.com/124220654/225843480-27e615be-55bc-4421-ad4d-62ae378740c7.jpg)
-
-
+![Multiple choice 4](https://user-images.githubusercontent.com/124220654/225844377-c6977ddd-0acc-49ac-bad8-435a1473c610.jpg)
 
 
 
