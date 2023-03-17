@@ -33,7 +33,8 @@ THEN I can save my initials and my score
 ## Installation
 To install the Code Quiz application, clone the repository to your local machine and open the index.html file in your preferred web browser.
 
-git clone git@github.com:      https://nakisa-alipour.github.io/Timed-Coding-Quiz/
+git clone git@github.com: https://github.com/Nakisa-Alipour/Timed-Coding-Quiz     
+the page can be found here: https://nakisa-alipour.github.io/Timed-Coding-Quiz/
 
 ## Usage
 To begin the quiz, click the "Start" button, and the timer will start.
